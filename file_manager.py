@@ -33,11 +33,14 @@ def format_file_size(size_bytes, precision=2, use_binary=True):
     else:
         units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB']
         divisor = 1000
+        
+        while size >= divisor and unit_index < len(units) - 1:
+            
     
     # TODO: Students implement the conversion algorithm
     # This involves loops, mathematical operations, and formatting
     
-    return formatted_size
+           return formatted_size
 
 
 def get_and_display_file_size(filename):
@@ -104,7 +107,7 @@ def list_directory_tree(directory, prefix="", max_depth=3, current_depth=0):
         if not items:
             print(f"{prefix}(empty directory)")
             # TODO: return None for yet another base case
-            return None
+        return None
 
         for i, item in enumerate(items):
             item_path = os.path.join(directory, item)
@@ -131,7 +134,8 @@ def list_directory_tree(directory, prefix="", max_depth=3, current_depth=0):
                 print(f"{current_prefix}{item}/")
                 # Recursive case: explore subdirectory
                 # TODO: perform recursive function call
-                found_files.extend(find_files_by_extension(item_path, extension, sub_path))
+                list_directory_tree(item_path, next_prefix, max_depth, current_depth + 1)
+                
 
     except (OSError, PermissionError) as e:
         print(f"{prefix}Error accessing directory: {e}")
@@ -145,7 +149,7 @@ def find_files_by_extension(directory, extension, current_path=""):
     if not os.path.isdir(directory):
         # TODO: return an empty list for the base case
         # TODO: remove the pass statement below, only added to avoid syntax error
-        return []
+       return []
 
     # TODO: Initialize found_files as an empty list
     found_files = []
@@ -166,9 +170,9 @@ def find_files_by_extension(directory, extension, current_path=""):
                 # Recursive case: Search in subdirectory
                 sub_path = os.path.join(current_path, item) if current_path else item
                 # TODO recursively call find_files_by_extension
-                found_files.extend(find_files_by_extension(item_path, extension, sub_path))
                 # TODO: Extend found_files with results from recursive call
-                list_directory_tree(item_path, next_prefix, max_depth, current_depth + 1)")
+                found_files.extend(find_files_by_extension(item_path, extension, sub_path))
+              
                
 
     except (OSError, PermissionError):

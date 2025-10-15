@@ -33,8 +33,8 @@ def get_user_choice():
     choice = input("Enter your choice (help/calc/info/quit): ").strip().lower()
     # TODO: Add code to return the choice
     return choice
-
-
+    
+    
 def display_help():
     """Display help information about available commands."""
     print("\n" + "=" * 40)
@@ -78,8 +78,12 @@ def display_info():
 # 3. invalid_choice_prefix defaults to "Invalid choice:"
 # 4. valid_commands defaults to "help, calc, info, quit"
 def process_user_command(
-    choice, running, show_goodbye=True, goodbye_message="Thank you fro using Python CLI File Manager!", 
-                        invalid_choice_prefix="invalid choice", valid_commands="help,calc,info,quit"
+    choice,
+    running,
+    show_goodbye=True,
+    goodbye_message="Thank you for using Python CLI File Manager!",
+    invalid_choice_prefix="Invalid choice:",
+    valid_commands="help, calc, info, quit",
 ):
     """
     Process a user command and return the updated running state.
@@ -120,7 +124,7 @@ def main():
     """Main program loop."""
     # Display welcome message
     # TODO: Call the function to display the welcome message
-     display_welcome()
+    display_welcome()
 
     # Main command loop
     # TODO: Initialize a variable to control the loop. Hint set running = True
